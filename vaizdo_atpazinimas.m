@@ -1,27 +1,27 @@
 close all
 clear all
 clc
-%% raidþiø pavyzdþiø nuskaitymas ir poþymiø skaièiavimas
-pavadinimas = 'train_data.png';
-pozymiai_tinklo_mokymui = pozymiai_raidems_atpazinti(pavadinimas, 8);
-%% Atpaþintuvo kûrimas
-% poþymiai ið celiø masyvo perkeliami á matricà
+%% raidï¿½iï¿½ pavyzdï¿½iï¿½ nuskaitymas ir poï¿½ymiï¿½ skaiï¿½iavimas
+pavadinimas = 'ft6.jpg';
+pozymiai_tinklo_mokymui = pozymiai_raidems_atpazinti(pavadinimas, 1);
+%% Atpaï¿½intuvo kï¿½rimas
+% poï¿½ymiai iï¿½ celiï¿½ masyvo perkeliami ï¿½ matricï¿½
 P = cell2mat(pozymiai_tinklo_mokymui);
-% sukuriama teisingø atsakymø matrica: 11 raidþiø, 8 eilutës mokymui
+% sukuriama teisingï¿½ atsakymï¿½ matrica: 11 raidï¿½iï¿½, 8 eilutï¿½s mokymui
 T = [eye(11), eye(11), eye(11), eye(11), eye(11), eye(11), eye(11), eye(11)];
-% sukuriamas SBF tinklas duotiems P ir T sàryðiams
-tinklas = newrb(P,T,0,1,13);
+% sukuriamas SBF tinklas duotiems P ir T sï¿½ryï¿½iams
+tinklas = newrb(P,T,0,1,10);
 
 %% Tinklo patikra
-% skaièiuojamas tinklo iðëjimas neþinomiems poþymiams
+% skaiï¿½iuojamas tinklo iï¿½ï¿½jimas neï¿½inomiems poï¿½ymiams
 P2 = P(:,12:22);
 Y2 = sim(tinklas, P2);
-% ieðkoma, kuriame iðëjime gauta didþiausia reikðmë
+% ieï¿½koma, kuriame iï¿½ï¿½jime gauta didï¿½iausia reikï¿½mï¿½
 [a2, b2] = max(Y2);
 %% Rezultato atvaizdavimas
-% apskaièiuosime raidþiø skaièiø - poþymiø P2 stulpeliø skaièiø
+% apskaiï¿½iuosime raidï¿½iï¿½ skaiï¿½iï¿½ - poï¿½ymiï¿½ P2 stulpeliï¿½ skaiï¿½iï¿½
 raidziu_sk = size(P2,2);
-% rezultatà saugosime kintamajame 'atsakymas'
+% rezultatï¿½ saugosime kintamajame 'atsakymas'
 atsakymas = [];
 for k = 1:raidziu_sk
     switch b2(k)
@@ -49,24 +49,24 @@ for k = 1:raidziu_sk
             atsakymas = [atsakymas, 'J'];
     end
 end
-% pateikime rezultatà komandiniame lange
+% pateikime rezultatï¿½ komandiniame lange
 % disp(atsakymas)
 % % figure(7), text(0.1,0.5,atsakymas,'FontSize',38)
-%% þodþio "KADA" poþymiø iðskyrimas 
+%% ï¿½odï¿½io "KADA" poï¿½ymiï¿½ iï¿½skyrimas 
 pavadinimas = 'test_kada.png';
 pozymiai_patikrai = pozymiai_raidems_atpazinti(pavadinimas, 1);
 
-%% Raidþiø atpaþinimas
-% poþymiai ið celiø masyvo perkeliami á matricà
+%% Raidï¿½iï¿½ atpaï¿½inimas
+% poï¿½ymiai iï¿½ celiï¿½ masyvo perkeliami ï¿½ matricï¿½
 P2 = cell2mat(pozymiai_patikrai);
-% skaièiuojamas tinklo iðëjimas neþinomiems poþymiams
+% skaiï¿½iuojamas tinklo iï¿½ï¿½jimas neï¿½inomiems poï¿½ymiams
 Y2 = sim(tinklas, P2);
-% ieðkoma, kuriame iðëjime gauta didþiausia reikðmë
+% ieï¿½koma, kuriame iï¿½ï¿½jime gauta didï¿½iausia reikï¿½mï¿½
 [a2, b2] = max(Y2);
 %% Rezultato atvaizdavimas
-% apskaièiuosime raidþiø skaièiø - poþymiø P2 stulpeliø skaièiø
+% apskaiï¿½iuosime raidï¿½iï¿½ skaiï¿½iï¿½ - poï¿½ymiï¿½ P2 stulpeliï¿½ skaiï¿½iï¿½
 raidziu_sk = size(P2,2);
-% rezultatà saugosime kintamajame 'atsakymas'
+% rezultatï¿½ saugosime kintamajame 'atsakymas'
 atsakymas = [];
 for k = 1:raidziu_sk
     switch b2(k)
@@ -94,24 +94,24 @@ for k = 1:raidziu_sk
             atsakymas = [atsakymas, 'J'];
     end
 end
-% pateikime rezultatà komandiniame lange
+% pateikime rezultatï¿½ komandiniame lange
 % disp(atsakymas)
 figure(8), text(0.1,0.5,atsakymas,'FontSize',38), axis off
-%% þodþio "FIKCIJA" poþymiø iðskyrimas 
+%% ï¿½odï¿½io "FIKCIJA" poï¿½ymiï¿½ iï¿½skyrimas 
 pavadinimas = 'test_fikcija.png';
 pozymiai_patikrai = pozymiai_raidems_atpazinti(pavadinimas, 1);
 
-%% Raidþiø atpaþinimas
-% poþymiai ið celiø masyvo perkeliami á matricà
+%% Raidï¿½iï¿½ atpaï¿½inimas
+% poï¿½ymiai iï¿½ celiï¿½ masyvo perkeliami ï¿½ matricï¿½
 P2 = cell2mat(pozymiai_patikrai);
-% skaièiuojamas tinklo iðëjimas neþinomiems poþymiams
+% skaiï¿½iuojamas tinklo iï¿½ï¿½jimas neï¿½inomiems poï¿½ymiams
 Y2 = sim(tinklas, P2);
-% ieðkoma, kuriame iðëjime gauta didþiausia reikðmë
+% ieï¿½koma, kuriame iï¿½ï¿½jime gauta didï¿½iausia reikï¿½mï¿½
 [a2, b2] = max(Y2);
 %% Rezultato atvaizdavimas
-% apskaièiuosime raidþiø skaièiø - poþymiø P2 stulpeliø skaièiø
+% apskaiï¿½iuosime raidï¿½iï¿½ skaiï¿½iï¿½ - poï¿½ymiï¿½ P2 stulpeliï¿½ skaiï¿½iï¿½
 raidziu_sk = size(P2,2);
-% rezultatà saugosime kintamajame 'atsakymas'
+% rezultatï¿½ saugosime kintamajame 'atsakymas'
 atsakymas = [];
 for k = 1:raidziu_sk
     switch b2(k)
@@ -139,7 +139,7 @@ for k = 1:raidziu_sk
             atsakymas = [atsakymas, 'J'];
     end
 end
-% pateikime rezultatà komandiniame lange
+% pateikime rezultatï¿½ komandiniame lange
 % disp(atsakymas)
 figure(9), text(0.1,0.5,atsakymas,'FontSize',38), axis off
 
